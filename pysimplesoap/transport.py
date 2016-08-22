@@ -19,17 +19,17 @@ import sys
 
 # Monkey patch for DoList EMT not supporting TLS over version 1.0
 # From http://stackoverflow.com/a/24166498/5412993
-from functools import wraps
-
-
-def sslwrap(func):
-    @wraps(func)
-    def bar(*args, **kw):
-        kw['ssl_version'] = ssl.PROTOCOL_TLSv1
-        return func(*args, **kw)
-    return bar
-
-ssl.wrap_socket = sslwrap(ssl.wrap_socket)
+# from functools import wraps
+#
+#
+# def sslwrap(func):
+#     @wraps(func)
+#     def bar(*args, **kw):
+#         kw['ssl_version'] = ssl.PROTOCOL_TLSv1
+#         return func(*args, **kw)
+#     return bar
+#
+# ssl.wrap_socket = sslwrap(ssl.wrap_socket)
 # End of patch
 
 try:
